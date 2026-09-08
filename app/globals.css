@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 239 84% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 32% 95%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 214 32% 96%;
+    --muted-foreground: 215 16% 40%;
+    --accent: 187 92% 41%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 28% 88%;
+    --input: 214 28% 88%;
+    --ring: 239 84% 60%;
+    --radius: 0.75rem;
+    --glow-indigo: 239 84% 60%;
+    --glow-cyan: 187 92% 45%;
+    --glow-magenta: 292 84% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply antialiased scroll-smooth;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground min-h-screen font-sans;
+    background-image:
+      radial-gradient(1100px 520px at 8% -8%, hsl(var(--glow-cyan) / 0.14), transparent 55%),
+      radial-gradient(900px 480px at 92% 0%, hsl(var(--glow-magenta) / 0.1), transparent 50%),
+      radial-gradient(800px 420px at 50% 100%, hsl(var(--glow-indigo) / 0.08), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-tight text-balance;
+  }
+
+  p {
+    @apply text-pretty;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.22);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-xl border border-border/60 shadow-glow;
+  }
+
+  .section-alt {
+    @apply bg-slate-50/90;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 via-indigo-600 to-fuchsia-500;
+  }
+
+  .brand-gradient {
+    @apply bg-gradient-to-r from-cyan-400 via-indigo-500 to-fuchsia-500;
+  }
+
+  .section-backdrop-grid {
+    background-color: hsl(210 40% 98%);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% 0%, hsl(var(--glow-cyan) / 0.16), transparent 55%),
+      radial-gradient(ellipse 70% 45% at 90% 10%, hsl(var(--glow-magenta) / 0.12), transparent 50%),
+      linear-gradient(to right, hsl(214 28% 88% / 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(214 28% 88% / 0.55) 1px, transparent 1px);
+    background-size: auto, auto, 48px 48px, 48px 48px;
+    mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, #000 35%, transparent 100%);
+  }
+
+  .section-backdrop-mesh {
+    background:
+      radial-gradient(900px 420px at 15% 20%, hsl(var(--glow-cyan) / 0.18), transparent 60%),
+      radial-gradient(800px 380px at 85% 15%, hsl(var(--glow-indigo) / 0.14), transparent 55%),
+      radial-gradient(700px 420px at 60% 90%, hsl(var(--glow-magenta) / 0.12), transparent 55%),
+      linear-gradient(180deg, hsl(210 40% 99%), hsl(214 40% 96%));
+  }
+
+  .section-backdrop-orbs {
+    background-color: hsl(210 40% 98%);
+    background-image:
+      radial-gradient(circle at 12% 28%, hsl(var(--glow-cyan) / 0.22), transparent 28%),
+      radial-gradient(circle at 88% 18%, hsl(var(--glow-magenta) / 0.18), transparent 26%),
+      radial-gradient(circle at 70% 78%, hsl(var(--glow-indigo) / 0.16), transparent 30%),
+      radial-gradient(circle at 24% 82%, hsl(187 92% 70% / 0.12), transparent 24%);
+  }
+
+  .section-backdrop-dots {
+    background-color: hsl(214 40% 97%);
+    background-image:
+      radial-gradient(hsl(239 84% 60% / 0.14) 1.2px, transparent 1.2px),
+      radial-gradient(ellipse 70% 50% at 50% 0%, hsl(var(--glow-indigo) / 0.12), transparent 60%);
+    background-size: 22px 22px, auto;
+    background-position: 0 0, center;
+  }
+
+  .section-backdrop-beams {
+    background:
+      linear-gradient(125deg, hsl(187 92% 95% / 0.9), transparent 42%),
+      linear-gradient(215deg, hsl(292 84% 96% / 0.85), transparent 40%),
+      linear-gradient(180deg, hsl(210 40% 99%), hsl(214 32% 96%));
+  }
+
+  .section-backdrop-beams::before {
+    content: "";
+    position: absolute;
+    inset: 10% auto auto 8%;
+    width: 42%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--glow-cyan) / 0.45), transparent);
+    transform: rotate(-18deg);
+  }
+
+  .section-backdrop-beams::after {
+    content: "";
+    position: absolute;
+    inset: auto 6% 18% auto;
+    width: 36%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--glow-magenta) / 0.4), transparent);
+    transform: rotate(14deg);
+  }
+}
